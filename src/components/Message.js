@@ -78,14 +78,15 @@ render(){
   if (!this.props.check){
     return(
       <div>
+        <h2>{this.props.name[3]} </h2>
          {this.props.message}
       </div>
     )
   }
-  
+
   return (
     <div>
-      <h2>{this.props.name[0]} </h2>
+      <h2>{this.props.name[3]} </h2>
       {this.props.message}
       <a style={deleteBtnStyle} 
          className="button is-danger" 

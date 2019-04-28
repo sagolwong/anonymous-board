@@ -8,9 +8,6 @@ import firebase from 'firebase';
 import 'firebase/auth';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
-
-const URL = 'https://swapi.co/api/people/';
-
 class App extends Component {
   constructor(props){
   super(props);
@@ -26,7 +23,7 @@ class App extends Component {
 }
 // The component's Local state.
 state = {
-  isSignedIn: false // Local signed-in state.
+  isSignedIn: false, // Local signed-in state.
 };
 // Configure FirebaseUI.
 uiConfig = {
@@ -52,14 +49,19 @@ componentWillUnmount() {
   this.unregisterAuthObserver();
 }
 
+handleChange = (selectedOption) => {
+  this.setState({ selectedOption });
+  console.log(`Option selected:`, selectedOption);
+}
 
 
 
 render() {
+
   if (!this.state.isSignedIn) {
     return (
       <div className="container">
-      <Header title="Encrypt Board" />
+      <Header title="AnonymousBoard" />
       <div>
         <br></br>
         <p>Please sign-in:</p>
@@ -87,7 +89,7 @@ render() {
     <div className="container">
       <Header title="Encrypt Board" />
       
-      <div>
+      <div className="pro">
         <br></br>
         <h>Welcome ...</h>
         <br></br>
