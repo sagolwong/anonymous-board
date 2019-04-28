@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './deco.css';
 class Header extends Component {
   render(){
     return (
