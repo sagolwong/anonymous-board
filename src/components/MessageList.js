@@ -2,17 +2,23 @@
 import React, {Component} from 'react';
 import Message from './Message';
 import _ from 'lodash';
+import axios from 'axios';
+
+const URL = 'https://swapi.co/api/people/';
+
 class MessageList extends Component {
   constructor(props){
     super(props);
     this.state = {
-      messages: []
+      messages: [],
+      people: [] 
     };
     let app = this.props.db.database().ref('messages');
     app.on('value', snapshot => {
       this.getData(snapshot.val());
     });
   }
+  
   getData(values){
     let messagesVal = values;
     let messages = _(messagesVal)
@@ -26,8 +32,23 @@ class MessageList extends Component {
       messages: messages
     });
   }
+  componentDidMount(){
+    axios.get(URL)
+         .then(res =>{
+           this.setState({ people : res.data.results})
+           console.log(res.data.results)
+         })
+  }
+
   render() {
-    let messageNodes = this.state.messages.map((message) => {
+    let name = _.map(this.state.people, people => {
+      return (
+        <div >
+          <h2>(USER){people.name} : </h2>
+        </div>
+      )
+    })
+    let messageNodes = this.state.messages.map((message) => { 
       return (
         <div className="card">
           <div className="card-content">
@@ -35,11 +56,14 @@ class MessageList extends Component {
             msgKey={message.key} 
             message = {message.message} 
             db={this.props.db}
+            name={name}
+            check={this.props.check}
           />
           </div>
         </div>
       )
     });
+
     return (
       <div>
         {messageNodes}

@@ -34,6 +34,9 @@ import React, {Component} from 'react';
      </div>
     );
  }
+
+
+
 class Message extends Component {
   constructor(props){
     super(props);
@@ -46,6 +49,7 @@ class Message extends Component {
     };
     this.toggleModal = this.toggleModal.bind(this);
   }
+  
   toggleModal() {
     this.setState((prev, props) => {
       const newState = !prev.modalState;
@@ -69,9 +73,19 @@ class Message extends Component {
       messageUpdate: e.target.value
     });
   }
+  
 render(){
+  if (!this.props.check){
+    return(
+      <div>
+         {this.props.message}
+      </div>
+    )
+  }
+  
   return (
     <div>
+      <h2>{this.props.name[0]} </h2>
       {this.props.message}
       <a style={deleteBtnStyle} 
          className="button is-danger" 

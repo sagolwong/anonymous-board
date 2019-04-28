@@ -20,6 +20,7 @@ class MessageBox extends Component {
       e.preventDefault();
       let dbCon = this.props.db.database().ref('/messages');
       dbCon.push({
+        name: trim(this.props.name),
         message: trim(e.target.value)
       });
       this.setState({
