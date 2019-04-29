@@ -12,12 +12,12 @@ class App extends Component {
   constructor(props){
   super(props);
   var config = {
-    apiKey: "AIzaSyBV192Df9q_x2POf70aNheD2Kg4VMjKeZ0",
-    authDomain: "react-encrypt-board.firebaseapp.com",
-    databaseURL: "https://react-encrypt-board.firebaseio.com",
-    projectId: "react-encrypt-board",
-    storageBucket: "react-encrypt-board.appspot.com",
-    messagingSenderId: "421884945197"
+    apiKey: 
+    authDomain: 
+    databaseURL: 
+    projectId: 
+    storageBucket: 
+    messagingSenderId: 
   };
   firebase.initializeApp(config);
 }
